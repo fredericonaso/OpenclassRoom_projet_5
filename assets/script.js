@@ -17,12 +17,62 @@ const slides = [
 	}
 ]
 
-let arrow_right = document.querySelector(".arrow_right");
-arrow_right.addEventListener("click", () => {
+
+// récupéré banner img et p
+let index = 0
+const slider = document.querySelector('#banner');
+let img = document.querySelector('.banner-img');
+const dots = document.querySelector('.dots');
+let tag = document.querySelector('#banner > p');
+const nombreSlide = slides.length
+const cheminImg = './assets/images/slideshow/';
+
+//rajouté les dots via javascript (selon taille tableau)
+for (let i=0; i < nombreSlide; i++){
+	const dot = document.createElement('div')
+	dot.setAttribute('class', 'dot')
+	dots.appendChild(dot);
+}
+
+
+function afficherSlideCourant(){
+	const slideCourant = slides[index];
+	img.src = cheminImg + slideCourant.image;
+	tag.innerHTML = slideCourant.tagLine;
+
+	const dotsEnfants = dots.children;
+
+  for (let i = 0; i < dotsEnfants.length; i++) {
+    if (i === index) {
+      dotsEnfants[i].classList.add("dot_selected");
+    } else {
+      dotsEnfants[i].classList.remove("dot_selected");
+    }
+  }
+}
+afficherSlideCourant;
+
+function slideSuivant() {
+	index++;
+	if (index === nombreSlide) {
+	index = 0;
+	}
+	afficherSlideCourant();
 	console.log("flèche de droite");
-});
+  }
+
+  function slidePrecedent() {
+	index--;
+	if (index < 0) {
+	  index = nombreSlide - 1;
+	}
+	afficherSlideCourant();
+	console.log("flèche de gauche");
+  }
+
+let arrow_right = document.querySelector(".arrow_right");
+arrow_right.addEventListener("click", slideSuivant);
 
 let arrow_left = document.querySelector(".arrow_left");
-arrow_left.addEventListener("click", () => {
-	console.log("flèche de gauche")
-});
+arrow_left.addEventListener("click", slidePrecedent );
+

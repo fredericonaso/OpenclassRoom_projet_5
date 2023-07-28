@@ -32,6 +32,7 @@ for (let i=0; i < nombreSlide; i++){
 	const dot = document.createElement('div')
 	dot.setAttribute('class', 'dot')
 	dots.appendChild(dot);
+	dots.children[0].classList.add("dot_selected");
 }
 
 
@@ -41,6 +42,7 @@ function afficherSlideCourant(){
 	tag.innerHTML = slideCourant.tagLine;
 
 	const dotsEnfants = dots.children;
+	
 
   for (let i = 0; i < dotsEnfants.length; i++) {
     if (i === index) {

@@ -32,9 +32,9 @@ for (let i=0; i < nombreSlide; i++){
 	const dot = document.createElement('div')
 	dot.setAttribute('class', 'dot')
 	dots.appendChild(dot);
-	dots.children[0].classList.add("dot_selected");
 }
 
+dots.children[0].classList.add("dot_selected");
 
 function afficherSlideCourant(){
 	const slideCourant = slides[index];

@@ -60,7 +60,6 @@ function slideSuivant() {
 	index = 0;
 	}
 	afficherSlideCourant();
-	console.log("flèche de droite");
   }
 
   function slidePrecedent() {
@@ -69,7 +68,6 @@ function slideSuivant() {
 	  index = nombreSlide - 1;
 	}
 	afficherSlideCourant();
-	console.log("flèche de gauche");
   }
 
 let arrow_right = document.querySelector(".arrow_right");
